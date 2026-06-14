@@ -81,9 +81,12 @@ function(event) {
         break;
       }
       case ':bypass': {
+        const scope = event.icon.find("#scope");
         if (value == 1) {
+          scope.addClass("disabled");
           stopScope();
         } else if (!scope.isEnabled) {
+          scope.removeClass("disabled");
           startScope();
         }
         break;
