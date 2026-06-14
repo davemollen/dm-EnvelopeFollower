@@ -21,11 +21,12 @@
 	rdfs:comment """
 A Control Voltage envelope follower plugin.
 
+Controls:
 - Gain controls the audio input gain. You can use this to compensate for gain increase or loss due to changing the Rise and Fall times.
-- Mode controls how the audio input amplitude is tracked. Peak uses the absolute peaks of the incoming signal and RMS takes an average over a small period of time.
-- Rise determines how much smoothing will be applied to a rising amplitude value.
-- Fall determines how much smoothing will be applied to a falling amplitude value.
-- Invert Output will invert the cv output signal. Instead of going from zero to one, it will go from one to zero. Be aware: the Rise control will now effectively control the falling time. And the Fall control will now control the rising time.
+- Mode controls how the audio input amplitude is tracked. Peak uses the absolute peaks of the incoming signal and RMS takes the average amplitude over a small period of time.
+- Rise determines how much smoothing will be applied to an increasing value.
+- Fall determines how much smoothing will be applied to a decreasing value.
+- Invert Output will invert the cv output signal. Instead of going from zero to one it will go from one to zero. N.B.: the Rise control will now effectively control the falling time. And the Fall control will now control the rising time.
 """ ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port [
