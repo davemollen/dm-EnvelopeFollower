@@ -1,0 +1,220 @@
+/* STYLES FOR THE BOXY PEDAL */
+
+@import url(/fonts/nexa/stylesheet.css);
+@import url(/fonts/questrial/stylesheet.css);
+
+
+.mod-pedal{{{cns}}} #canvas-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.mod-pedal{{{cns}}} canvas#scope {
+    width: 240px; 
+    height: 120px;
+    background: #000000;
+    border-radius: 8px;
+    padding: 4px 0px;
+}
+
+.mod-pedal{{{cns}}} #controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.mod-pedal{{{cns}}} #bypass {
+    position: absolute;
+    top: 8px;
+    right: 24px;
+}
+
+.mod-pedal{{{cns}}} .row {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+}
+
+.mod-pedal{{{cns}}} .column {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.mod-pedal{{{cns}}} .gap-12 {
+    gap: 12px;
+}
+
+.mod-pedal{{{cns}}} .align-center {
+    align-items: center;
+}
+
+.mod-pedal{{{cns}}} .-mt-4 {
+    margin-top: -4px;
+}
+
+/* = CONTAINER
+================================================ */
+.mod-pedal{{{cns}}} {
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:272px 480px;
+    width:272px;
+    height:480px;
+    border-radius: 0px;
+    background-image:url(/resources/assets/background.png{{{ns}}});
+}
+
+
+/* = SWITCH
+================================================ */
+.mod-pedal{{{cns}}} .mod-switch {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    width: 48px;
+}
+
+.mod-pedal{{{cns}}} .mod-switch .mod-switch-image {
+    background-image:url(/resources/assets/switch.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size: auto 28px 38.5px;
+    cursor: pointer;
+    height: 38.5px;
+    width: 28px;
+    z-index: 30;
+}
+
+.mod-pedal{{{cns}}} .mod-switch-image.on {
+    margin-top: 8px;
+    background-position:center top !important;
+}
+
+.mod-pedal{{{cns}}} .mod-switch-image.off {
+    margin-top: -2px;
+    background-position:center bottom !important;
+}
+
+.mod-pedal{{{cns}}} .mod-switch-image.bypass.on {
+    margin-top: 3px;
+}
+
+.mod-pedal{{{cns}}} .mod-switch-image.bypass.off {
+    margin-top: -7px;
+}
+
+.mod-pedal{{{cns}}} .mod-light {
+    background-position:center left;
+    background-repeat:no-repeat;
+    background-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.mod-pedal{{{cns}}} .mod-switch-image + .mod-light.on {
+    margin-top: -6px;
+}
+
+.mod-pedal{{{cns}}} .mod-switch-image + .mod-light.off {
+    margin-top: 4px;
+}
+
+/* = TABS
+================================================ */
+.mod-pedal{{{cns}}} .mod-tabs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 20;
+}
+
+.mod-pedal{{{cns}}} .mod-tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.mod-pedal{{{cns}}} .mod-tabs > .mod-tab {
+    width: 83px;
+    height: 28px;
+    border: 2px solid #797979;
+    background-color: #D9D9D9;
+    border-bottom: none;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    color: #211F24;
+    cursor: pointer;
+}
+
+.mod-pedal{{{cns}}} .mod-tabs > .mod-tab:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.mod-pedal{{{cns}}} .mod-tabs > .mod-tab:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom: 2px solid #797979;
+}
+
+.mod-pedal{{{cns}}} .mod-tabs > .mod-tab.selected {
+    background-color: #FFD573;
+}
+
+
+/* = KNOBS
+================================================ */
+.mod-pedal{{{cns}}} .mod-knob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    z-index: 20;
+}
+
+.mod-pedal{{{cns}}} .mod-knob-image {
+    width: 83px;
+    height: 83px;
+    background-image:url(/resources/assets/Big_knob_3_70frames.png{{{ns}}});
+}
+
+.mod-pedal{{{cns}}} .mod-knob .mod-knob-value {
+    margin: 0 auto;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 500;
+    color: #000000;
+    pointer-events: none;
+    width: 64px;
+    text-align: center;
+    margin-top: 1px;
+}
+
+/* = PARAM TITLE
+================================================ */
+.mod-pedal{{{cns}}} .mod-param-title {
+    bottom:0px;
+    display:block;
+    font-size:11px;
+    font-weight:bold;
+    height:12px;
+    line-height:1;
+    margin:0;
+    overflow:hidden;
+    padding:0;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+.mod-pedal{{{cns}}} .mod-param-title.two-lines {
+    height: 24px;
+}

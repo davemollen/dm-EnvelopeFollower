@@ -1,0 +1,5 @@
+target
+.DS_Store
+*libdm_envelope_follower.so
+*libdm_envelope_follower.dylib
+*libdm_envelope_follower.dll

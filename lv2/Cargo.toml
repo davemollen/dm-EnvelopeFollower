@@ -1,0 +1,13 @@
+[package]
+name = "dm_envelope_follower"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+lv2 = { git = "https://github.com/davemollen/rust-lv2.git", branch = "master", features = [
+    "minimal_plugin",
+] }
+dsp = { path = "../dsp" }
+
+[lib]
+crate-type = ["cdylib"]

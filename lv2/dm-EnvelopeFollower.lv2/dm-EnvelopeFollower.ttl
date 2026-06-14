@@ -1,0 +1,100 @@
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix units: <http://lv2plug.in/ns/extensions/units#> .
+@prefix pprops:   <http://lv2plug.in/ns/ext/port-props#> .
+@prefix mod:   <http://moddevices.com/ns/mod#> .
+
+<https://github.com/davemollen/dm-EnvelopeFollower>
+	a lv2:Plugin , mod:ControlVoltagePlugin;
+	lv2:project <http://lv2plug.in/ns/lv2> ;
+	doap:name "CV Envelope Follower" ;
+	doap:license "GPLv3" ;
+	doap:maintainer [
+		foaf:name "Dave Mollen" ;
+		foaf:homepage <https://github.com/davemollen/dm-EnvelopeFollower> ;
+	] ;
+	mod:brand "DM" ;
+	mod:label "CV Envelope Follower" ;
+	rdfs:comment """
+A Control Voltage envelope follower plugin.
+
+- Gain controls the audio input gain. You can use this to compensate for gain increase or loss due to changing the Rise and Fall times.
+- Mode controls how the audio input amplitude is tracked. Peak uses the absolute peaks of the incoming signal and RMS takes an average over a small period of time.
+- Rise determines how much smoothing will be applied to a rising amplitude value.
+- Fall determines how much smoothing will be applied to a falling amplitude value.
+- Invert Output will invert the cv output signal. Instead of going from zero to one, it will go from one to zero. Be aware: the Rise control will now effectively control the falling time. And the Fall control will now control the rising time.
+""" ;
+	lv2:optionalFeature lv2:hardRTCapable ;
+	lv2:port [
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 0 ;
+		lv2:symbol "gain" ;
+		lv2:name "Gain" ;
+		lv2:default 12.0 ;
+		lv2:minimum -32.0 ;
+		lv2:maximum 32.0 ;
+		units:unit units:db
+	], [
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 1 ;
+		lv2:symbol "mode" ;
+		lv2:name "Mode" ;
+		lv2:portProperty lv2:integer;
+		lv2:portProperty lv2:enumeration ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 1 ;
+		lv2:scalePoint [rdfs:label "peak"; rdf:value 0];
+		lv2:scalePoint [rdfs:label "rms"; rdf:value 1];
+	], [
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 2 ;
+		lv2:symbol "rise" ;
+		lv2:name "Rise" ;
+		lv2:portProperty pprops:logarithmic ;
+		lv2:default 10.0 ;
+		lv2:minimum 1.0 ;
+		lv2:maximum 1000.0 ;
+		units:unit units:ms
+	], [
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 3 ;
+		lv2:symbol "fall" ;
+		lv2:name "Fall" ;
+		lv2:portProperty pprops:logarithmic ;
+		lv2:default 100.0 ;
+		lv2:minimum 1.0 ;
+		lv2:maximum 1000.0 ;
+		units:unit units:ms
+	], [
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 4 ;
+		lv2:symbol "invert_cv_output" ;
+		lv2:name "Invert Output" ;
+		lv2:portProperty lv2:integer, lv2:toggled;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 1 ;
+	], [
+		a lv2:AudioPort, lv2:InputPort ;
+		lv2:index 5 ;
+		lv2:symbol "audio_input" ;
+		lv2:name "Audio Input"
+	] , [
+		a lv2:CVPort, lv2:OutputPort, mod:CVPort ;
+		lv2:index 6 ;
+		lv2:minimum 0.0 ;
+		lv2:maximum 10.0  ;
+		lv2:symbol "cv_output" ;
+		lv2:name "CV Output"
+	] , [
+		a lv2:OutputPort, lv2:ControlPort ;
+		lv2:index 7 ;
+		lv2:minimum 0.0 ;
+		lv2:maximum 10.0  ;
+		lv2:symbol "scope_input" ;
+		lv2:name "Oscilloscope Input"
+	].
