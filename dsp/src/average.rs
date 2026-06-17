@@ -13,6 +13,12 @@ impl Average {
     }
   }
 
+  pub fn reset(&mut self) {
+    self.buffer.fill(0.);
+    self.write_pointer = 0;
+    self.previous_mean = 0.;
+  }
+
   pub fn process(&mut self, input: f32) -> f32 {
     let n = self.buffer.len();
 

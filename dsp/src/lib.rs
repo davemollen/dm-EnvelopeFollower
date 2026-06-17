@@ -21,6 +21,7 @@ impl EnvelopeFollower {
   }
 
   pub fn reset(&mut self) {
+    self.average.reset();
     self.slide.reset();
   }
 
